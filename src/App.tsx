@@ -24,7 +24,8 @@ const App = () => {
   });
 
   // TypeScriptを使う場合はeにも型設定が必要。(型がわからないとき = any)
-  const getWeather = (e: any) => {
+  // eにはReactの用意している特別な型を書く。
+  const getWeather = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     fetch(`https://api.weatherapi.com/v1/current.json?key=b1b0285f95c743d6b8862430242004&q=${city}&aqi=no`)
         .then(res => res.json())
