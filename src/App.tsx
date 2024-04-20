@@ -37,6 +37,7 @@ const App = () => {
             conditionText: data.current.condition.text,
             icon: data.current.condition.icon
           })
+          setCity("")
         })
         .catch(() => alert("エラーが発生しました。ページをリロードしてください"))
   }
@@ -46,7 +47,10 @@ const App = () => {
       <div className="container">
         {/* データ渡すとき・・・名前＝｛渡すもの} */}
         <Title />
-        <Form setCity={setCity} getWeather={getWeather}/>
+        <Form setCity={setCity} 
+          getWeather={getWeather}
+          city={city}
+        />
         <Results results={results} />
       </div>
     </div>
