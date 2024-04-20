@@ -41,11 +41,13 @@ const App = () => {
   }
 
   return (
-    <div>
-      {/* データ渡すとき・・・名前＝｛渡すもの} */}
-      <Title />
-      <Form setCity={setCity} getWeather={getWeather}/>
-      <Results results={results} />
+    <div className="wrapper">
+      <div className="container">
+        {/* データ渡すとき・・・名前＝｛渡すもの} */}
+        <Title />
+        <Form setCity={setCity} getWeather={getWeather}/>
+        <Results results={results} />
+      </div>
     </div>
   );
 }
