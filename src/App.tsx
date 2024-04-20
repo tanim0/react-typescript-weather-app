@@ -38,6 +38,7 @@ const App = () => {
             icon: data.current.condition.icon
           })
         })
+        .catch(() => alert("エラーが発生しました。ページをリロードしてください"))
   }
 
   return (
