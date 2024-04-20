@@ -2,6 +2,7 @@ import { useState } from "react";
 import Title from "./components/Title";
 import Form from "./components/Form";
 import Results from "./components/Results";
+import Loading from "./components/Loading";
 
 type ResultsState =  {
   country: string
@@ -12,6 +13,8 @@ type ResultsState =  {
 }
 
 const App = () => {
+  const [loading, setLoading] = useState<boolean>(false);
+
   // satate・・・データを保管する場所
   const [city, setCity] = useState<string>("");
   
@@ -27,6 +30,7 @@ const App = () => {
   // eにはReactの用意している特別な型を書く。
   const getWeather = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     fetch(`https://api.weatherapi.com/v1/current.json?key=b1b0285f95c743d6b8862430242004&q=${city}&aqi=no`)
         .then(res => res.json())
         .then(data => {
@@ -37,6 +41,7 @@ const App = () => {
             conditionText: data.current.condition.text,
             icon: data.current.condition.icon
           })
+          setLoading(false)
           setCity("")
         })
         .catch(() => alert("エラーが発生しました。ページをリロードしてください"))
@@ -51,7 +56,8 @@ const App = () => {
           getWeather={getWeather}
           city={city}
         />
-        <Results results={results} />
+      
+        {loading ? <Loading /> : <Results results={results} />}
       </div>
     </div>
   );
