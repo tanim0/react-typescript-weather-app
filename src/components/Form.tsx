@@ -11,7 +11,7 @@ const Form = (props: FormProps) => {
                 type="text"
                 name="city"
                 placeholder="都市名"
-                onChange={e => PaymentResponse.setCity(e.target.value)}
+                onChange={e => props.setCity(e.target.value)}
             />
             <button type="submit" onClick={props.getWeather}>
                 Get Weather
